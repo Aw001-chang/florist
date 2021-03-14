@@ -1,5 +1,5 @@
 module.exports = {
 
-  publicPath: '/florist/'
+  publicPath: '/florist/dist/'
 
 }
