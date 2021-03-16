@@ -60,6 +60,28 @@
           </div>
         </div>
       </div>
+      <div class="order_price text-right container" v-if="cart.total !== cart.final_total">
+        <div class="row">
+          <div class="col-1"></div>
+          <div class="h5 col align-self-end text-success">
+            折扣價 ： {{ cart.final_total | currency }}
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-end mt-3">
+        <div class="input-group col-lg-4 col-md-6">
+          <input type="text" class="form-control" placeholder="輸入優惠卷代碼" v-model="couponCode">
+          <div class="input-group-append">
+              <button class="btn btn-outline-danger" type="button" @click="useCoupon">套用優惠卷</button>
+          </div>
+          <div class="codenumber col-12 mt-1">
+            <div class="row align-items-center">
+              <i class="fas fa-ticket-alt mr-2"></i>請輸入優惠代碼：520 ， 折扣80%
+            </div>
+          </div>
+        </div>
+        
+      </div>
       <div class="nextstep text-right">
         <router-link to="/customerinformation" class="btn btn-outline-primary"
           >下一步<i class="fas fa-chevron-right ml-2"></i
@@ -75,7 +97,8 @@ export default {
   data() {
     return {
       isLoading: false,
-      cart: []
+      cart: [],
+      couponCode:'',
     };
   },
   methods: {
@@ -108,7 +131,21 @@ export default {
         }
         vm.getCart();
       });
-    }
+    },
+    useCoupon(){
+      const vm = this;
+      const api = `https://vue-course-api.hexschool.io/api/anpo/coupon`;
+      vm.isLoading = true;
+      this.$http.post(api, {data: {code: vm.couponCode}}).then(response => {
+        vm.isLoading = false;
+        if (response.data.success) {
+          vm.couponCode='';
+        } else {
+          console.log(response.data)
+        }
+        vm.getCart();
+      });
+    },
   },
   created() {
     this.getCart();

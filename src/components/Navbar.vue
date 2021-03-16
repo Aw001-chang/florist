@@ -1,12 +1,7 @@
 <template>
-  <div>
-    <nav
-      class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"
-    >
-      <router-link to="/" class="navbar-brand col-md-3 col-lg-2 mr-0 px-3"
-        >宣品花藝</router-link
-      >
-      <!-- <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">宣品花藝</a> -->
+  <div class="navcomponent sticky-top">
+    <nav class="navbar navbar-dark bg-dark flex-md-nowrap p-0 shadow">
+      <router-link to="/" class="navbar-brand col-md-3 col-lg-2 mr-0 px-3">宣品花藝</router-link>
       <button
         class="navbar-toggler position-absolute d-md-none collapsed"
         type="button"
@@ -35,9 +30,7 @@
 
 <script>
 export default {
-  data() {
-    return {};
-  },
+  name:'navcomponent',
   methods: {
     signin_out() {
       const api = "https://vue-course-api.hexschool.io/logout";

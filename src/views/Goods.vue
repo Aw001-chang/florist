@@ -209,10 +209,16 @@ export default {
         qty
       };
       this.$http.post(api, { data: cart }).then(response => {
-        console.log(response);
-        vm.$bus.$emit("addtoCart:update", (id, (qty = 1)));
-        vm.getCart();
-        $("#goodsModal").modal("hide");
+        if(response.data.success){
+          // console.log(response);
+          this.$bus.$emit('message:push',response.data.message,'success');
+          vm.$bus.$emit("addtoCart:update", (id, (qty = 1)));
+          vm.getCart();
+          $("#goodsModal").modal("hide");
+        }else{
+          this.$bus.$emit('message:push',response.data.message,'dannger');
+        }
+        
       });
     },
     getCart() {

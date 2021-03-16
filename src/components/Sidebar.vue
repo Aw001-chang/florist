@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="sidebar">
     <nav
       id="sidebarMenu"
       class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
@@ -19,7 +19,7 @@
         </h6>
         <ul class="nav flex-column">
           <li class="nav-item">
-            <router-link to="/admin/products" class="nav-link active">
+            <router-link to="/admin/products" class="nav-link">
               <i class="fas fa-box-open mr-2"></i>產品列表
             </router-link>
           </li>
@@ -59,3 +59,9 @@
     </nav>
   </div>
 </template>
+
+<script>
+export default {
+  name:'sidebar',
+}
+</script>

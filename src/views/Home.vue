@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <FrontNav />
+    <Alert/>
     <router-view></router-view>
     <Footer />
   </div>
@@ -10,11 +11,13 @@
 // @ is an alias to /src
 import FrontNav from "@/components/FrontNav.vue";
 import Footer from "@/components/Footer.vue";
+import Alert from "@/components/AlertMessage.vue";
 export default {
   name: "Home",
   components: {
     FrontNav,
-    Footer
+    Footer,
+    Alert,
   }
 };
 </script>

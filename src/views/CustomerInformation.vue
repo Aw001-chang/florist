@@ -29,7 +29,7 @@
                   class="col-sm-6"
                 >
                   <div class="form-group">
-                    <label for="username">收件人姓名</label>
+                    <label for="username"><span class="text-danger">*</span>收件人姓名</label>
                     <input
                       type="text"
                       class="form-control"
@@ -51,7 +51,7 @@
                   class="col-sm-6"
                 >
                   <div class="form-group">
-                    <label for="usertel">收件人電話</label>
+                    <label for="usertel"><span class="text-danger">*</span>收件人電話</label>
                     <input
                       type="tel"
                       class="form-control"
@@ -69,7 +69,7 @@
                 v-slot="{ errors, classes }"
               >
                 <div class="form-group">
-                  <label for="email">Email</label>
+                  <label for="email"><span class="text-danger">*</span>Email</label>
                   <input
                     id="email"
                     type="email"
@@ -87,7 +87,7 @@
                 name="地址欄位不得留空"
               >
                 <div class="form-group">
-                  <label for="useraddress">收件人地址</label>
+                  <label for="useraddress"><span class="text-danger">*</span>收件人地址</label>
                   <input
                     type="text"
                     class="form-control"
@@ -111,7 +111,7 @@
                 ></textarea>
               </div>
               <div class="text-right btns">
-                <router-link to="/" class="btn btn-outline-primary mr-2"
+                <router-link to="/goods" class="btn btn-outline-primary mr-2"
                   >繼續選購</router-link
                 >
                 <button class="btn btn-danger" :disabled="invalid">

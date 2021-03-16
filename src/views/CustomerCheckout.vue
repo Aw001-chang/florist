@@ -45,14 +45,14 @@
               {{ item.qty }}/{{ item.product.unit }}
             </div>
             <div class="col-md-3 col-xs-12 text-center final_total">
-              {{ item.final_total | currency }}
+              {{ item.total | currency }}
             </div>
           </div>
           <div class="order_price text-right">
             <div class="row">
               <div class="col-1"></div>
               <div class="h5 col align-self-end">
-                總計 ： {{ item.total | currency }}
+                總計 ： {{ item.final_total | currency }}
               </div>
             </div>
           </div>
@@ -126,10 +126,15 @@ export default {
       const vm = this;
       const api = `https://vue-course-api.hexschool.io/api/anpo/pay/${vm.orderId}`;
       vm.isLoading = true;
-      this.$http.post(api).then(() => {
-        vm.$bus.$emit("addtoCart:update");
-        vm.isLoading = false;
-        vm.getOrder();
+      this.$http.post(api).then((response) => {
+        if(response.data.success){
+          vm.$bus.$emit("addtoCart:update");
+          vm.isLoading = false;
+          vm.getOrder();
+          this.$bus.$emit('message:push',response.data.message,'success');
+        }else{
+          this.$bus.$emit('message:push',response.data.message,'dannger');
+        }
       });
     }
   },

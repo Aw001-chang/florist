@@ -19,6 +19,7 @@ import App from "./App.vue";
 import router from "./router";
 import "./bus";
 import currencyFilter from "./filters/currency.js";
+import dateFilter from "./filters/date.js";
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/vue-loading.css";
 
@@ -26,6 +27,7 @@ Vue.config.productionTip = false;
 Vue.use(VueAxios, axios);
 axios.defaults.withCredentials = true;
 Vue.filter("currency", currencyFilter);
+Vue.filter("date", dateFilter);
 Vue.component("Loading", Loading);
 
 // 將規則導出，並且加入擴充套件內
